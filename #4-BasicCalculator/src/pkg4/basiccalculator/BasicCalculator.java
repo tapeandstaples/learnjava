@@ -113,6 +113,9 @@ public class BasicCalculator implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==buttone){
+            if (MEMORY.length()==0){
+                MEMORY=answer.getText();
+            }
             parseMemory();
         }else if (e.getSource()==buttonc){
             MEMORY="";
