@@ -55,9 +55,17 @@ public class SimpleSnake extends TimerTask implements KeyListener {
                 fullbody[0].update(s1.xpos,s1.ypos);
                 for(int i=1; i<score;i++){
                     fullbody[i].update(fullbody[i-1].xpos,fullbody[i-1].ypos);
+                    boolean hit = s1.checkSelf(fullbody[i]);
+                    if(hit){
+                        score = 0;
+                        fullbody = new Body[100];
+                        
+                        
+                    }
                 }
             }
             boolean c = s1.check(f);
+            
             if(c){
                 int rx = randGen.nextInt(35);
                 int ry = randGen.nextInt(55);
@@ -69,7 +77,7 @@ public class SimpleSnake extends TimerTask implements KeyListener {
                 
             }
             try {
-                Thread.sleep(1000/24);
+                Thread.sleep(100);
             } catch (InterruptedException ex) {
                 Logger.getLogger(SimpleSnake.class.getName()).log(Level.SEVERE, null, ex);
             }
